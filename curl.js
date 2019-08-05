@@ -1,11 +1,10 @@
-const fs = require("fs");
+const request = require('request');
 
-module.exports = function(filename) {
-  fs.readFile("./" + filename, "utf8", (err, files) => {
+module.exports = function(url) {
+  request(url, function(err, resp, body) {
     if (err) throw err;
     else {
-      console.log(files);
-      //   process.stdout.write(files);
+      process.stdout.write(body);
     }
   });
 };
